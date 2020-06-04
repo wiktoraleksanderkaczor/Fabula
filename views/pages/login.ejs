@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" type="text/css" href="styles/style.css"/>
+		<title>Login</title>
+	</head>
+	<body>
+		<div>
+			<h1>Welcome To Fabula</h1>
+			<form id="loginForm" method="POST" action="/login">
+				<label for="username">Username:</label>
+				<input type="text" name="username" placeholder="Username" required pattern="^[A-Za-z0-9]{1,12}$" title="Username may only contain letters and numbers and be no more than 12 characters long.">
+				<label for="password1">Password:</label>
+				<input type="password" name="password" placeholder = "Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password must be at least 8 characters long, and include an upper case letter, a lower case letter and a number.">
+			    <input type="submit" value="Login">
+			</form>
+			<form id="linksForm" method="GET" action="/register">
+				<input type="submit" value="Register" formaction="/register" form="linksForm">
+			</form>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" type="text/css" href="styles/style.css" />
+		<title>Reader</title>
+	</head>
+	<body>
+		<h2><%= info %></h2>
+		<h3><%= story_name %>:</h3>
+
+		<div id="story">
+			<%- story_text %>
+		</div>
+
+		<div>
+			<form id="extendForm" method="POST" action="/main">
+				<label for="user_input">Next input:</label>
+				<input type="text" name="user_input" placeholder="Continue..." required>
+				<input type="hidden" name="story_name" value="<%= story_name %>" >
+				<input type="submit" value="Extend" formaction="/extend" form="extendForm">
+			</form>
+			<form id="linksForm" method="GET" action="/main">
+				<input type="submit" value="Go back" formaction="/main" form="linksForm">
+			</form>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" type="text/css" href="styles/style.css" />
+		<title>Home</title>
+	</head>
+	<body>
+		<h1>Welcome <%= username %></h1>
+		<p>Dashboard:</p>
+		<h2><%= info %></h2>
+		<h3>My Stories:</h3>
+		<div class="col-lg-12" id="stories-list">
+			<!-- Insert my list here -->                              
+		</div>
+		<div>
+			<!-- Log out -->
+			<form id="logOutForm" method="POST" action="/">
+				<input type="submit" value="Log out" formaction="/logOut?_method=DELETE" form="logOutForm">
+			</form>
+			<!-- Read or Delete form -->
+			<form id="crudForm" method="post" action="/"> 
+				<label for="story_name">Story Name:</label>
+				<input type="text" name="story_name" placeholder="Story Name" required pattern="^[A-Za-z0-9 ]{1,50}$" title="Story name may only contain letters and numbers and be no more than 50 characters long.">
+				<select name="action">
+					<option value="create" selected>Create</option>
+					<option value="read">Read</option>
+					<option value="delete">Delete</option>
+				</select>
+				<input type="submit" value="Execute" formaction="/crud_actions" form="crudForm"> 
+			</form>
+		
+		</div>
+
+		<script>
+			// Fetch JSON data from server
+			fetch('./stories')
+			.then(response => {
+				return response.json();
+			})
+			.then(data => {
+				// Use the data to list stories with name in table.
+				console.log(data);
+                    // Use the data to add stories to a HTML list.
+                    var listDiv = document.getElementById('stories-list');
+                    var ul=document.createElement('ul');
+                    for (var i = 0; i < data.length; ++i) {
+                        var li=document.createElement('li');
+                        // Use innerHTML to set the text.
+                        li.innerHTML = data[i].id + " - " + data[i].name;   
+                        ul.appendChild(li);                                 
+                    }
+                    listDiv.appendChild(ul);
+			})
+			.catch(err => {
+				console.log("Error with fetching story data.");
+			});
+		</script>
+	</body>
+</html>

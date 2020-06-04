@@ -1,0 +1,14 @@
+Login page.
+Register page (with email verification for spam filtering, captcha too for that matter)
+Admin page to delete users or their stories.
+Page to view a story, get the story by JSON API. Has "extend" button to generate the story further based on what's already there. Has "save" button, pretty obvious. "name" textbox for story name when saved.
+Dashboard to view saved stories and the ability to delete them
+
+The only permissions really needed are an "admin" permission on "stories" for admins and the standard 
+CRUD permissions on the stories for the "user".
+
+Create new keypair for HTTPS
+
+Do I want user input or just extend the story randomly?
+
+I can use tensorflow-rocm and textgenrnn, the latter from GitHub to train a model for generating text. 

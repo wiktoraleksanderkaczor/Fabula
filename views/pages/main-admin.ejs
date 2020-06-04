@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" type="text/css" href="styles/style.css"/>
+		<title>Admin</title>
+	</head>
+	<body>
+		<h1>Welcome <%= username %></h1>
+		<p>Admin Page:</p>
+		<h2><%= info %></h2>
+		<div>
+			<form id="logOutForm" method="POST" action="/">
+				<input type="submit" value="Log out" formaction="/logOut?_method=DELETE" form="logOutForm">
+			</form>
+			<!-- Form with username textbox and a button to get their stories -->
+			<!-- The user stories will be put in a list and there will be a dropdown for selecting which one -->
+			<!-- There will be a button to delete the selected story -->	
+			<!-- Can steal code from "main.ejs" -->
+		</form>
+		</div>
+	</body>
+</html>
